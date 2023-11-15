@@ -1,5 +1,5 @@
 pipeline {
-    agent none 
+    agent {label 'singapore'}
     stages {
         stage('Build') { 
             agent {
