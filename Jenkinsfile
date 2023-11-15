@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'singapore'}
+    agent none
     stages {
         stage('Build') { 
             agent {
@@ -28,7 +28,7 @@ pipeline {
             }
         }
 	    stage('Deliver') { 
-            agent any
+            agent {label 'singapore'}
             environment { 
                 VOLUME = '$(pwd)/sources:/src'
                 IMAGE = 'cdrx/pyinstaller-linux:python2'
