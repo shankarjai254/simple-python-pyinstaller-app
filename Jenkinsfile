@@ -1,18 +1,16 @@
 pipeline {
-    agent {label 'singapore'}
+    agent none 
     stages {
-        stage('Build') {
+        stage('Build') { 
             agent {
-                singapore {
-                    image 'python:2-alpine'
+                docker {
+                    image 'python:3.12.0-alpine3.18' 
                 }
             }
             steps {
-                sh 'python -m py_compile sources/add2vals.py sources/calc.py'
-		stash(name: 'compiled-results', includes: 'sources/*.py*')
+                sh 'python -m py_compile sources/add2vals.py sources/calc.py' 
+                stash(name: 'compiled-results', includes: 'sources/*.py*') 
             }
         }
+    }
 }
-}
-
-
